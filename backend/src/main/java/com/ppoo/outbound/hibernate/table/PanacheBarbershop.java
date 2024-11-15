@@ -12,8 +12,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "client", schema = "public")
-public class PanacheClient extends PanacheEntityBase {
+@Table(name = "barbershop", schema = "public")
+public class PanacheBarbershop extends PanacheEntityBase {
 
 	@Id
 	public String id;
@@ -23,5 +23,11 @@ public class PanacheClient extends PanacheEntityBase {
 	public String email;
 
 	public String phone;
+
+	private String address;
+
+	private String city;
+
+	private String state;
 
 }
