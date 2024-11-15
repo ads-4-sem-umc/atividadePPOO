@@ -7,7 +7,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class BarbershopPanacheRepository implements BarbershopRepository {
@@ -24,17 +23,17 @@ public class BarbershopPanacheRepository implements BarbershopRepository {
 				.state(panacheBarbershop.getState()).build();
 	}
 
-    @Override
-    public List<Barbershop> list() {
-        List<PanacheBarbershop> listPanacheBarbershop = PanacheBarbershop.listAll();
-        List<Barbershop> listBarbershop = new ArrayList<>();
-        listPanacheBarbershop.forEach(panacheBarbershop-> {
-            listBarbershop.add(Barbershop.builder().id(panacheBarbershop.getId()).name(panacheBarbershop.getName())
-                    .email(panacheBarbershop.getEmail()).phone(panacheBarbershop.getPhone())
-                    .address(panacheBarbershop.getAddress()).city(panacheBarbershop.getCity())
-                    .state(panacheBarbershop.getState()).build());
-        });
-        return listBarbershop;
-    }
+	@Override
+	public List<Barbershop> list() {
+		List<PanacheBarbershop> listPanacheBarbershop = PanacheBarbershop.listAll();
+		List<Barbershop> listBarbershop = new ArrayList<>();
+		listPanacheBarbershop.forEach(panacheBarbershop -> {
+			listBarbershop.add(Barbershop.builder().id(panacheBarbershop.getId()).name(panacheBarbershop.getName())
+					.email(panacheBarbershop.getEmail()).phone(panacheBarbershop.getPhone())
+					.address(panacheBarbershop.getAddress()).city(panacheBarbershop.getCity())
+					.state(panacheBarbershop.getState()).build());
+		});
+		return listBarbershop;
+	}
 
 }

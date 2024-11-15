@@ -1,6 +1,5 @@
 package com.ppoo.inbound.controller;
 
-import com.ppoo.core.dto.barbershop.RegisterBarbershopDTO;
 import com.ppoo.core.dto.client.RegisterClientDTO;
 import com.ppoo.core.entity.Client;
 import com.ppoo.outbound.hibernate.table.PanacheClient;
@@ -31,8 +30,8 @@ class ClientControllerTest {
 	void shouldBeAbleToListClient() {
 		var clientDTO = RegisterClientDTO.builder().name("nome").email("email@email.com").phone("11-999999999").build();
 		creteClient(clientDTO);
-		var listClient = RestAssured.given().log().all().contentType("application/json").when()
-				.get("/client").then().log().all().statusCode(200).extract().body().as(List.class);
+		var listClient = RestAssured.given().log().all().contentType("application/json").when().get("/client").then()
+				.log().all().statusCode(200).extract().body().as(List.class);
 		Assertions.assertNotNull(listClient);
 		Assertions.assertFalse(listClient.isEmpty());
 	}

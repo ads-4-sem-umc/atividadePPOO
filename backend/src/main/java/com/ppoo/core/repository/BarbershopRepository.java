@@ -8,6 +8,6 @@ public interface BarbershopRepository {
 
 	Barbershop save(Barbershop barbershop);
 
-    List<Barbershop> list();
+	List<Barbershop> list();
 
 }

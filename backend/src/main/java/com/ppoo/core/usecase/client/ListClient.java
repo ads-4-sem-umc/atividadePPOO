@@ -10,11 +10,11 @@ import java.util.List;
 @ApplicationScoped
 public class ListClient {
 
-    @Inject
-    ClientRepository clientRepository;
+	@Inject
+	ClientRepository clientRepository;
 
-    public List<Client> execute() {
-        return clientRepository.list();
-    }
+	public List<Client> execute() {
+		return clientRepository.list();
+	}
 
 }

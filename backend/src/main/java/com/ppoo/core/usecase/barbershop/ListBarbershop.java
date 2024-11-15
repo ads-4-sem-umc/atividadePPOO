@@ -10,11 +10,11 @@ import java.util.List;
 @ApplicationScoped
 public class ListBarbershop {
 
-    @Inject
-    BarbershopRepository barbershopRepository;
+	@Inject
+	BarbershopRepository barbershopRepository;
 
-    public List<Barbershop> execute() {
-        return barbershopRepository.list();
-    }
+	public List<Barbershop> execute() {
+		return barbershopRepository.list();
+	}
 
 }
