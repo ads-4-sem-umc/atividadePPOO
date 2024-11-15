@@ -1,9 +1,14 @@
 package com.ppoo.outbound.hibernate.repository;
 
+import com.ppoo.core.entity.Barbershop;
 import com.ppoo.core.entity.Client;
 import com.ppoo.core.repository.ClientRepository;
 import com.ppoo.outbound.hibernate.table.PanacheClient;
+import com.ppoo.outbound.hibernate.table.PanacheClient;
 import jakarta.enterprise.context.ApplicationScoped;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @ApplicationScoped
 public class ClientPanacheRepository implements ClientRepository {
@@ -15,6 +20,17 @@ public class ClientPanacheRepository implements ClientRepository {
 		panacheClient.persist();
 		return Client.builder().id(panacheClient.getId()).name(panacheClient.getName()).email(panacheClient.getEmail())
 				.phone(panacheClient.getPhone()).build();
+	}
+
+	@Override
+	public List<Client> list() {
+		List<PanacheClient> listPanacheClient = PanacheClient.listAll();
+		List<Client> listClient = new ArrayList<>();
+		listPanacheClient.forEach(panacheClient-> {
+			listClient.add(Client.builder().id(panacheClient.getId()).name(panacheClient.getName()).email(panacheClient.getEmail())
+					.phone(panacheClient.getPhone()).build());
+		});
+		return listClient;
 	}
 
 }
