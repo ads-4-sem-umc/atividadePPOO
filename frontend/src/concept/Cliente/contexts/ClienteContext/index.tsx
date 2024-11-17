@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useState
 } from "react";
-import { ClienteContextType } from "./types";
+import { ClienteContextType, ClientType } from "./types";
 
 const ClienteContext = createContext({} as ClienteContextType);
 
@@ -18,6 +18,7 @@ const ClienteContextProvider: React.FC<{
   const [nome, setNome] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [telefone, setTelefone] = useState<string>("");
+  const [clientes, setClientes] = useState<ClientType[]>([]);
 
   const clearForm = useCallback(() => {
     setNome("");
@@ -33,9 +34,11 @@ const ClienteContextProvider: React.FC<{
       setEmail,
       telefone,
       setTelefone,
+      clientes,
+      setClientes,
       clearForm
     }),
-    [nome, email, telefone, clearForm]
+    [nome, email, telefone, clientes, clearForm]
   );
 
   return (
