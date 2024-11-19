@@ -13,5 +13,5 @@ export type FieldType = {
   type?: HTMLInputTypeAttribute; 
   setField: (value: string) => void;
   options?: OptionType[];
-  fieldType?: "TextField" | "Select";
+  fieldType?: "TextField" | "Select" | "Hour";
 }

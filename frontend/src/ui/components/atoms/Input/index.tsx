@@ -2,10 +2,12 @@ import { useMemo } from "react";
 import { Props } from "./types";
 import InputText from "../InputText";
 import InputSelect from "../InputSelect";
+import InputHour from "../InputHour";
 
 export const inputs: { [key: string]: any } = {
   TextField: InputText,
-  Select: InputSelect
+  Select: InputSelect,
+  Hour: InputHour
 };
 
 const Input: React.FC<Props> = ({

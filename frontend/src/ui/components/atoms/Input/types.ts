@@ -7,7 +7,7 @@ export type Props = {
   name: string;
   type?: HTMLInputTypeAttribute; 
   setField: (value: string) => void;
-  fieldType: "TextField" | "Select"  
+  fieldType: "TextField" | "Select" | "Hour"  
   options?: OptionType[];
   variant: string;
 }

@@ -7,6 +7,7 @@ import ClientSideToastContainer from "./ToastContainer";
 import AppThemeProvider from "./ThemeProvider";
 import BarbeariaContextProvider from "@/concept/Barbearia/contexts/BarbeariaContext";
 import BarbeiroContextProvider from "@/concept/Barbeiro/contexts/BarbeiroContext";
+import AgendamentoContextProvider from "@/concept/Agendamento/contexts/AgendamentoContext";
 
 export const metadata: Metadata = {
   title: "AppBarber",
@@ -19,33 +20,34 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <BarbeiroContextProvider>
-      <BarbeariaContextProvider>
-        <ClienteContextProvider>
-          <html lang="pt-BR">
-            <body className="h-[100vh] flex flex-col">
-              <nav className="flex p-4 gap-6 items-center">
-                <Link href={"/"} className="text-xl font-bold text-blue-500">
-                  AppBarber
-                </Link>
-                <div className="flex gap-3 items center">
-                  <Link href={"/barbearia"}>Barbearias</Link>
-                  <Link href={"/barbeiro"}>Barbeiros</Link>
-                  <Link href={"/cliente"}>Clientes</Link>
-                  <Link href={"/agendamento"}>Agendamentos</Link>
-                </div>
-              </nav>
-              <Providers>
-                {" "}
-                <AppThemeProvider>
-                  {children}
-                  <ClientSideToastContainer />
-                </AppThemeProvider>
-              </Providers>
-            </body>
-          </html>
-        </ClienteContextProvider>
-      </BarbeariaContextProvider>
-    </BarbeiroContextProvider>
+    <AgendamentoContextProvider>
+      <BarbeiroContextProvider>
+        <BarbeariaContextProvider>
+          <ClienteContextProvider>
+            <html lang="pt-BR">
+              <body className="h-[100vh] flex flex-col">
+                <nav className="flex p-4 gap-6 items-center">
+                  <Link href={"/"} className="text-xl font-bold text-blue-500">
+                    AppBarber
+                  </Link>
+                  <div className="flex gap-3 items center">
+                    <Link href={"/barbearia"}>Barbearias</Link>
+                    <Link href={"/barbeiro"}>Barbeiros</Link>
+                    <Link href={"/cliente"}>Clientes</Link>
+                    <Link href={"/agendamento"}>Agendamentos</Link>
+                  </div>
+                </nav>
+                <Providers>
+                  <AppThemeProvider>
+                    {children}
+                    <ClientSideToastContainer />
+                  </AppThemeProvider>
+                </Providers>
+              </body>
+            </html>
+          </ClienteContextProvider>
+        </BarbeariaContextProvider>
+      </BarbeiroContextProvider>
+    </AgendamentoContextProvider>
   );
 }
