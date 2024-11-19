@@ -1,5 +1,6 @@
-import { Button, TextField } from "@mui/material";
+import { Button } from "@mui/material";
 import { Props } from "./types";
+import Input from "../../atoms/Input";
 
 const FormRegister: React.FC<Props> = ({ fields, onRegister }) => {
   return (
@@ -8,7 +9,7 @@ const FormRegister: React.FC<Props> = ({ fields, onRegister }) => {
       style={{ gap: "1rem" }}
     >
       {fields.map((field) => (
-        <TextField
+        <Input
           key={field.name}
           id="outlined-basic"
           label={field.label}
@@ -16,7 +17,9 @@ const FormRegister: React.FC<Props> = ({ fields, onRegister }) => {
           type={field.type}
           name={field.name}
           value={field.value}
-          onChange={(e) => field.setField(e.target.value)}
+          setField={field.setField}
+          fieldType={field.fieldType || "TextField"}
+          options={field.options || []}
         />
       ))}
       <Button variant="contained" onClick={onRegister}>
