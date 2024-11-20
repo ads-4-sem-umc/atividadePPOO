@@ -7,6 +7,7 @@ import React, {
   useState
 } from "react";
 import { AgendamentoContextType, AgendamentoType } from "./types";
+import { Dayjs } from "dayjs";
 
 const AgendamentoContext = createContext({} as AgendamentoContextType);
 
@@ -17,13 +18,13 @@ const AgendamentoContextProvider: React.FC<{
 }> = ({ children }) => {
   const [clienteId, setClienteId] = useState<string>("");
   const [barbeiroId, setBarbeiroId] = useState<string>("");
-  const [hora, setHora] = useState<string>("");
+  const [hora, setHora] = useState<Dayjs | null | undefined>(null);
   const [agendamentos, setAgendamentos] = useState<AgendamentoType[]>([]);
 
   const clearForm = useCallback(() => {
     setClienteId("");
     setBarbeiroId("");
-    setHora("");
+    setHora(null);
   }, []);
 
   const values = useMemo(

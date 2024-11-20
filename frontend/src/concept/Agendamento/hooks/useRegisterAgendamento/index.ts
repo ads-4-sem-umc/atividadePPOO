@@ -1,5 +1,4 @@
 "use client"
-
 import { useApi } from "@/api/useApi";
 import { useMutation } from "@tanstack/react-query";
 import { useMemo } from "react";
@@ -13,9 +12,14 @@ export const useRegisterAgendamento = () => {
   } = useAgendamentoContext();
   const { api } = useApi();
 
+  const formatHora = (value: Dayjs | null | undefined) => {
+    if(!value) return;
+    return value.format("HH:mm A")
+  }
+
   async function save(values: any) {
     const result = await api.post(
-      "/barber",
+      "/schedule",
       values,
     );
     return result.data;
@@ -29,7 +33,7 @@ export const useRegisterAgendamento = () => {
       barber: {
         id: barbeiroId
       },
-      hour: hora
+      hour: formatHora(hora)
     }),
     [
       clienteId,

@@ -70,7 +70,7 @@ const AgendamentoForm: React.FC = () => {
         clearForm();
         toast.success("Agendamento cadastrado com sucesso");
         queryClient.invalidateQueries({
-          queryKey: ["getBarbeiros"],
+          queryKey: ["getAgendamentos"],
           exact: true,
           refetchType: "active"
         });

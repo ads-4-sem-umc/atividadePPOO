@@ -1,7 +1,9 @@
+import { Dayjs } from "dayjs";
+
 export type Props = {
   id: string;
-  value: string;
+  value: Dayjs | null | undefined;
   label: string;
   name: string;
-  setField: (value: string) => void;
+  setField: (value: Dayjs | null | undefined) => void;
 }
